@@ -27,7 +27,10 @@ def get_processes_info():
                 # System Idle Process for Windows NT, useless to see anyways
                 continue
             # get the name of the file executed
-            name = process.name()
+            try:
+                name = process.name()
+            except:
+                name = "N/A"
             # get the time the process was spawned
             try:
                 create_time = datetime.fromtimestamp(process.create_time())
